@@ -3,7 +3,6 @@ package com.zn.domain.designpattern.factory;
 import com.zn.domain.designpattern.factory.bean.Pizza;
 import com.zn.domain.designpattern.factory.bean.SHCheesePizza;
 import com.zn.domain.designpattern.factory.bean.SHPepperPizza;
-import ddd.leave.domain.designpattern.factory.bean.*;
 
 /**
  * This is Description
