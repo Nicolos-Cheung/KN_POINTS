@@ -19,7 +19,7 @@ import io.netty.handler.logging.LoggingHandler;
 public class BootstrapFactory {
 
 
-    public static void buildServerAndStartup(Integer port, ChannelInboundHandlerAdapter... handlerAdapter) {
+    public static void buildServerAndStartup(Integer port, ChannelHandlerAdapter... handlerAdapter) {
 
         //NioEventLoopGroup中默认的NioEventLoop个数：cpu核数*2
         //处理连接请求
@@ -63,7 +63,7 @@ public class BootstrapFactory {
     }
 
 
-    public static void buildClientAndConnect(int port, ChannelInboundHandlerAdapter... handlerAdapter) {
+    public static void buildClientAndConnect(int port, ChannelHandlerAdapter... handlerAdapter) {
 
         //仅需一个事件循环组
         EventLoopGroup group = new NioEventLoopGroup();
