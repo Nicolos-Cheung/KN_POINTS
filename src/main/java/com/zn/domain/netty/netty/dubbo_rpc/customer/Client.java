@@ -32,29 +32,26 @@ public class Client {
 
     public static void main(String[] args) {
 
-        TestService service = (TestService) getBean(TestService.class, "TestService#upperString");
+        TestService service = (TestService) getBean(TestService.class);
         String result = service.upperString("upperString rpc call ....");
         System.out.println();
     }
 
 
-    public static Object getBean(final Class<?> serviceClass, final String providerName) {
+    public static Object getBean(final Class<?> serviceClass) {
 
         return Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
 
                 new Class<?>[]{serviceClass},
-
                 //代理对象，方法，参数
                 (proxy, method, args) -> {
-
                     if (client == null) {
                         initHandler();
                     }
-                    client.setParam(providerName + "#" + args[0]);
+                    client.setParam(serviceClass.getName() + "#" + method.getName() + "#" + args[0]);
 
                     return executor.submit(client).get();
                 });
-
     }
 
     private static void initHandler() {
